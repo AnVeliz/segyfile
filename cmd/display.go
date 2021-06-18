@@ -29,7 +29,7 @@ var (
 				fmt.Println("Error with flags parsing. Flag displaytype should be specified properly")
 				return
 			}
-			fmt.Println("display called " + file + displayType)
+			fmt.Println("display called ", file, displayType)
 		},
 	}
 )
