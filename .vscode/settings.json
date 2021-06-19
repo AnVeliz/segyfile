@@ -1,6 +1,8 @@
 {
+    "explorer.compactFolders": false,
     "cSpell.words": [
         "segy",
-        "segyfile"
+        "segyfile",
+        "segyparser"
     ]
 }

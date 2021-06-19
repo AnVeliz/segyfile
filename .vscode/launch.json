@@ -14,7 +14,7 @@
                 "display",
                 "everything",
                 "--file",
-                "sdf"
+                "f:\\WORK\\Research\\Code\\segy_reader\\github\\segy_cpp\\src_sample\\velocity.segy"
             ]
         }
     ]

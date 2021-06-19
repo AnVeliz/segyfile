@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/AnVeliz/segyfile/internal/segyparser"
 	"github.com/spf13/cobra"
 )
 
@@ -30,6 +31,7 @@ var (
 				return
 			}
 			fmt.Println("display called ", file, displayType)
+			segyparser.Parse(file, segyparser.ParseEverything)
 		},
 	}
 )
