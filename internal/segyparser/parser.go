@@ -24,6 +24,6 @@ func Parse(file string, scope ParseScope) {
 	r := bufio.NewReader(f)
 	d := make([]byte, 3200)
 	r.Read(d)
-	hr := sections.BinaryFileHeaderRaw{}
+	hr := sections.BinaryFileHeader{}
 	hr.Read(r)
 }
