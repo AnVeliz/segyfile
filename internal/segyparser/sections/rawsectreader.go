@@ -12,7 +12,12 @@ type RawData struct {
 }
 
 func (bh *RawData) Data() []byte {
-	res := make([]byte, binaryFileHeaderSize)
+	ds := binary.Size(bh.data)
+	if ds == 0 || ds == -1 {
+		return nil
+	}
+
+	res := make([]byte, ds)
 	copy(res, bh.data)
 	return bh.data
 }
