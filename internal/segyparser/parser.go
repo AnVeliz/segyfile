@@ -14,16 +14,16 @@ const (
 	ParseEverything ParseScope = iota
 )
 
-func Parse(file string, scope ParseScope) {
-	f, err := os.Open(file)
+func Parse(fileName string, parseScope ParseScope) {
+	file, err := os.Open(fileName)
 	if err != nil {
 		fmt.Println("Error loading the file")
 		return
 	}
 
-	r := bufio.NewReader(f)
-	d := make([]byte, 3200)
-	r.Read(d)
-	hr := sections.BinaryFileHeader{}
-	hr.Read(r)
+	bufReader := bufio.NewReader(file)
+	data := make([]byte, sections.TEXTUAL_HEADER_LEN)
+	bufReader.Read(data)
+	binaryHeader := sections.BinaryFileHeader{}
+	binaryHeader.Read(bufReader)
 }

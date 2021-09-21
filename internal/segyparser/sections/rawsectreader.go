@@ -11,30 +11,30 @@ type RawData struct {
 	data []byte
 }
 
-func (bh *RawData) Data() []byte {
-	ds := binary.Size(bh.data)
-	if ds == 0 || ds == -1 {
+func (d *RawData) Data() []byte {
+	dataSize := binary.Size(d.data)
+	if dataSize == 0 || dataSize == -1 {
 		return nil
 	}
 
-	res := make([]byte, ds)
-	copy(res, bh.data)
-	return bh.data
+	result := make([]byte, dataSize)
+	copy(result, d.data)
+	return d.data
 }
 
-func (bh *RawData) Read(r *bufio.Reader, resObj interface{}) error {
-	objSize := binary.Size(resObj)
-	bh.data = make([]byte, objSize)
-	n, err := r.Read(bh.data)
+func (d *RawData) Read(reader *bufio.Reader, resultObject interface{}) error {
+	objectSize := binary.Size(resultObject)
+	d.data = make([]byte, objectSize)
+	readLen, err := reader.Read(d.data)
 
 	if err != nil {
 		return err
 	}
-	if n < objSize {
+	if readLen < objectSize {
 		return errors.New("can't read data chunk since the number of bytes read is less then expected")
 	}
 
-	err = binary.Read(bytes.NewReader(bh.data), binary.BigEndian, resObj)
+	err = binary.Read(bytes.NewReader(d.data), binary.BigEndian, resultObject)
 	if err != nil {
 		return err
 	}

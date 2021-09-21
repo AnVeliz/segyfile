@@ -229,11 +229,11 @@ type BinaryFileHeader struct {
 	content    BinaryFileHeaderContent
 }
 
-func (bh *BinaryFileHeader) Read(r *bufio.Reader) error {
-	bh.rawContent = RawData{}
-	return bh.rawContent.Read(r, &bh.content)
+func (h *BinaryFileHeader) Read(reader *bufio.Reader) error {
+	h.rawContent = RawData{}
+	return h.rawContent.Read(reader, &h.content)
 }
 
-func (bh *BinaryFileHeader) Reset(r *bufio.Reader) error {
-	return bh.rawContent.Read(r, &bh.content)
+func (h *BinaryFileHeader) Reset(reader *bufio.Reader) error {
+	return h.rawContent.Read(reader, &h.content)
 }

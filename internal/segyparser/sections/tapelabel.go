@@ -13,15 +13,15 @@ type TapeLabel struct {
 	data []byte
 }
 
-func (tl *TapeLabel) Data() []byte {
+func (l *TapeLabel) Data() []byte {
 	res := make([]byte, typeLabelSize)
-	copy(res, tl.data)
+	copy(res, l.data)
 	return res
 }
 
-func (tl *TapeLabel) Read(r *bufio.Reader) error {
-	tl.data = make([]byte, typeLabelSize)
-	n, err := r.Read(tl.data)
+func (l *TapeLabel) Read(r *bufio.Reader) error {
+	l.data = make([]byte, typeLabelSize)
+	n, err := r.Read(l.data)
 	if err != nil {
 		return err
 	}
